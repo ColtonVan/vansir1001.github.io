@@ -1,3 +1,7 @@
+/** @jsxImportSource @emotion/react */
+// import { jsx } from "@emotion/react";
+import { Form, Input, Select } from "antd";
+const { Option } = Select;
 export interface User {
   id: string;
   name: string;
@@ -16,22 +20,28 @@ interface SearchPanelProps {
 }
 export const SearchPanel = ({ param, setParam, users }: SearchPanelProps) => {
   return (
-    <form>
-      <input
-        type="text"
-        value={param.name}
-        onChange={(e) => setParam({ ...param, name: e.target.value })}
-      />
-      <select
-        onChange={(e) => setParam({ ...param, personId: e.target.value })}
-      >
-        <option value="">负责人</option>
-        {users.map((item) => (
-          <option key={item.id} value={item.id}>
-            {item.name}
-          </option>
-        ))}
-      </select>
-    </form>
+    <Form
+      css={{ marginBottom: "2rem" }}
+      layout="inline"
+      initialValues={{ personId: "" }}
+    >
+      <Form.Item name="name">
+        <Input
+          type="text"
+          value={param.name}
+          onChange={(e) => setParam({ ...param, name: e.target.value })}
+        />
+      </Form.Item>
+      <Form.Item name="personId">
+        <Select onChange={(e) => setParam({ ...param, personId: String(e) })}>
+          <Option value="">负责人</Option>
+          {users.map((item) => (
+            <Option key={item.id} value={item.id}>
+              {item.name}
+            </Option>
+          ))}
+        </Select>
+      </Form.Item>
+    </Form>
   );
 };
