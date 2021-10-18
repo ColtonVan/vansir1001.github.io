@@ -19,7 +19,10 @@ export const http = async (
     ...customConfig,
   };
   if (config.method.toUpperCase() === "GET") {
-    endpoint += `?${qs.stringify(data)}`;
+    endpoint +=
+      Object.getOwnPropertyNames(data ?? {}).length !== 0
+        ? `?${qs.stringify(data)}`
+        : "";
   } else {
     config.body = JSON.stringify(data || {});
   }

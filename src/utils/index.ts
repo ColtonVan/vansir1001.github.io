@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 const isFalsy = (value: unknown) => (value === 0 ? false : !value);
-export const cleanObject = (obj: object) => {
+const isVoid = (value: unknown) =>
+  value === undefined || value === null || value === "";
+export const cleanObject = (obj: { [key: string]: unknown }) => {
   let result = { ...obj };
   Object.keys(result).forEach((key) => {
-    //@ts-ignore
-    if (isFalsy(result[key])) {
-      //@ts-ignore
+    if (isVoid(result[key])) {
       delete result[key];
     }
   });
@@ -14,6 +14,7 @@ export const cleanObject = (obj: object) => {
 export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
+    //eslint-disable-next-line
   }, []);
 };
 export const useDebounce = <T>(value: T, delay?: number): T => {
