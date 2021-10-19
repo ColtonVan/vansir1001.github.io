@@ -4,7 +4,7 @@ import { LongButton } from ".";
 import { useAsync } from "../utils/use-async";
 export const Login = ({ onError }: { onError: (error: Error) => void }) => {
   const { login, user } = useAuth();
-  const { run, isLoading } = useAsync();
+  const { run, isLoading } = useAsync(undefined, { throwOnError: true });
   const submitHandler = async (values: {
     username: string;
     password: string;
