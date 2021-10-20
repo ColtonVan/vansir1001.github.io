@@ -69,3 +69,4 @@ export const useDocumentTitle = (
     //eslint-disable-next-line
   }, []);
 };
+export const resetRoute = () => (window.location.href = window.location.origin);
