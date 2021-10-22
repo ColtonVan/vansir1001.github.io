@@ -1,5 +1,5 @@
 import { useMountedRef } from "./index";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 interface State<D> {
   error: Error | null;
@@ -25,16 +25,19 @@ export const useAsync = <D>(
     ...defaultInitialState,
     ...initialState,
   });
-  const setData = (data: D) => {
-    //如果页面挂载了才设置值
-    if (mountedRef.current) {
-      setState({
-        data,
-        stat: "success",
-        error: null,
-      });
-    }
-  };
+  const setData = useCallback(
+    (data: D) => {
+      //如果页面挂载了才设置值
+      if (mountedRef.current) {
+        setState({
+          data,
+          stat: "success",
+          error: null,
+        });
+      }
+    },
+    [mountedRef]
+  );
   const setError = (error: Error) => {
     setState({
       error,
@@ -43,31 +46,31 @@ export const useAsync = <D>(
     });
   };
   //用来出发异步请求
-  const run = (
-    promise: Promise<D>,
-    runConfig?: { retry: () => Promise<D> }
-  ) => {
-    if (!promise || !promise.then) {
-      throw new Error("请传入Promise类型数据");
-    }
-    setRetry(() => () => {
-      if (runConfig?.retry) {
-        run(runConfig.retry(), runConfig);
+  const run = useCallback(
+    (promise: Promise<D>, runConfig?: { retry: () => Promise<D> }) => {
+      if (!promise || !promise.then) {
+        throw new Error("请传入Promise类型数据");
       }
-    });
-    setState({ ...state, stat: "loading" });
-    return promise
-      .then((data) => {
-        setData(data);
-        return data;
-      })
-      .catch((error) => {
-        //catch会处理掉异常，得主动抛出异常才能被调用时捕捉到
-        setError(error);
-        if (config.throwOnError) return Promise.reject(error);
-        return error;
+      setRetry(() => () => {
+        if (runConfig?.retry) {
+          run(runConfig.retry(), runConfig);
+        }
       });
-  };
+      setState((prevState) => ({ ...prevState, stat: "loading" }));
+      return promise
+        .then((data) => {
+          setData(data);
+          return data;
+        })
+        .catch((error) => {
+          //catch会处理掉异常，得主动抛出异常才能被调用时捕捉到
+          setError(error);
+          if (config.throwOnError) return Promise.reject(error);
+          return error;
+        });
+    },
+    [config.throwOnError, setData]
+  );
   return {
     isIdle: state.stat === "idle",
     isLoading: state.stat === "loading",
