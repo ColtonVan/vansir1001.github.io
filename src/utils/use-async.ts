@@ -1,3 +1,4 @@
+import { useMountedRef } from "./index";
 import { useState } from "react";
 
 interface State<D> {
@@ -17,6 +18,7 @@ export const useAsync = <D>(
   initialState?: State<D>,
   initialConfig?: typeof defaultConfig
 ) => {
+  const mountedRef = useMountedRef();
   const [retry, setRetry] = useState(() => () => {});
   const config = { ...defaultConfig, ...initialConfig };
   const [state, setState] = useState({
@@ -24,11 +26,14 @@ export const useAsync = <D>(
     ...initialState,
   });
   const setData = (data: D) => {
-    setState({
-      data,
-      stat: "success",
-      error: null,
-    });
+    //如果页面挂载了才设置值
+    if (mountedRef.current) {
+      setState({
+        data,
+        stat: "success",
+        error: null,
+      });
+    }
   };
   const setError = (error: Error) => {
     setState({

@@ -44,7 +44,7 @@ const PageHeader = () => {
         <Dropdown
           overlay={
             <Menu>
-              <Menu.Item>
+              <Menu.Item key="logout">
                 <Button type="link" onClick={logout}>
                   登出
                 </Button>
