@@ -2,20 +2,34 @@ import { User } from "./search-panel";
 import { Table, TableProps } from "antd";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import { Pin } from "../../components/pin";
+import { useEditProject } from "../../utils/project";
 
 export interface Project {
-  id: string;
+  id: number;
   name: string;
-  personId: string;
+  personId: number;
   pin: boolean;
   organization: string;
   created: number;
 }
 interface ListProps extends TableProps<Project> {
   users: User[];
+  refresh?: () => void;
 }
 export const List = ({ users, ...props }: ListProps) => {
+  const { mutate } = useEditProject();
+  const pinProject = (id: number) => (pin: boolean) =>
+    mutate({ id, pin }).then(props.refresh);
   const columns = [
+    {
+      title: <Pin checked={true} disabled={true} />,
+      render(arg1: null, project: Project) {
+        return (
+          <Pin onCheckedChange={pinProject(project.id)} checked={project.pin} />
+        );
+      },
+    },
     {
       dataIndex: "name",
       title: "名称",
@@ -31,7 +45,7 @@ export const List = ({ users, ...props }: ListProps) => {
     {
       dataIndex: "personId",
       title: "负责人",
-      render: (personId: string) =>
+      render: (personId: number) =>
         users.find((item1) => item1.id === personId)?.name ?? "未知",
     },
     {
@@ -41,26 +55,5 @@ export const List = ({ users, ...props }: ListProps) => {
         created ? dayjs(created).format("YYYY-MM-DD") : "无",
     },
   ];
-  return (
-    <Table rowKey="id" pagination={false} columns={columns} {...props} />
-    // <table>
-    //   <thead>
-    //     <tr>
-    //       <th>名称</th>
-    //       <th>负责人</th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>
-    //     {list.map((project) => (
-    //       <tr key={project.id}>
-    //         <td>{project.name}</td>
-    //         <td>
-    //           {users.find((user) => user.id === project.personId)?.name ??
-    //             "未知"}
-    //         </td>
-    //       </tr>
-    //     ))}
-    //   </tbody>
-    // </table>
-  );
+  return <Table rowKey="id" pagination={false} columns={columns} {...props} />;
 };
