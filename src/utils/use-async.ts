@@ -1,5 +1,5 @@
 import { useMountedRef } from "./index";
-import { useCallback, useState } from "react";
+import { useCallback, useReducer, useState } from "react";
 
 interface State<D> {
   error: Error | null;
@@ -14,37 +14,50 @@ const defaultInitialState: State<null> = {
 const defaultConfig = {
   throwOnError: false,
 };
+
+const useSafeDispatch = <T>(dispatch: (args: T) => void) => {
+  const mountedRef = useMountedRef();
+  return useCallback(
+    (args: T) => (mountedRef.current ? dispatch(args) : void 0),
+    [dispatch, mountedRef]
+  );
+};
+
 export const useAsync = <D>(
   initialState?: State<D>,
   initialConfig?: typeof defaultConfig
 ) => {
-  const mountedRef = useMountedRef();
   const [retry, setRetry] = useState(() => () => {});
   const config = { ...defaultConfig, ...initialConfig };
-  const [state, setState] = useState({
-    ...defaultInitialState,
-    ...initialState,
-  });
+  const [state, dispatch] = useReducer(
+    (state: State<D>, action: Partial<State<D>>) => ({ ...state, ...action }),
+    {
+      ...defaultInitialState,
+      ...initialState,
+    }
+  );
+  const safeDispatch = useSafeDispatch(dispatch);
   const setData = useCallback(
     (data: D) => {
       //如果页面挂载了才设置值
-      if (mountedRef.current) {
-        setState({
-          data,
-          stat: "success",
-          error: null,
-        });
-      }
+      safeDispatch({
+        data,
+        stat: "success",
+        error: null,
+      });
     },
-    [mountedRef]
+    [safeDispatch]
   );
-  const setError = (error: Error) => {
-    setState({
-      error,
-      stat: "error",
-      data: null,
-    });
-  };
+  const setError = useCallback(
+    (error: Error) => {
+      safeDispatch({
+        error,
+        stat: "error",
+        data: null,
+      });
+    },
+    [safeDispatch]
+  );
   //用来出发异步请求
   const run = useCallback(
     (promise: Promise<D>, runConfig?: { retry: () => Promise<D> }) => {
@@ -56,7 +69,7 @@ export const useAsync = <D>(
           run(runConfig.retry(), runConfig);
         }
       });
-      setState((prevState) => ({ ...prevState, stat: "loading" }));
+      safeDispatch({ stat: "loading" });
       return promise
         .then((data) => {
           setData(data);
@@ -69,7 +82,7 @@ export const useAsync = <D>(
           return error;
         });
     },
-    [config.throwOnError, setData]
+    [config.throwOnError, setData, safeDispatch, setError]
   );
   return {
     isIdle: state.stat === "idle",
