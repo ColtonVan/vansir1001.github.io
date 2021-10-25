@@ -1,9 +1,10 @@
 import { User } from "./search-panel";
-import { Table, TableProps } from "antd";
+import { Dropdown, Table, TableProps, Menu } from "antd";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import { Pin } from "../../components/pin";
 import { useEditProject } from "../../utils/project";
+import { ButtonNoPadding } from "../../components/lib";
 
 export interface Project {
   id: number;
@@ -16,6 +17,7 @@ export interface Project {
 interface ListProps extends TableProps<Project> {
   users: User[];
   refresh?: () => void;
+  setProjectModalOpen: (isOpen: boolean) => void;
 }
 export const List = ({ users, ...props }: ListProps) => {
   const { mutate } = useEditProject();
@@ -53,6 +55,28 @@ export const List = ({ users, ...props }: ListProps) => {
       title: "创建时间",
       render: (created: number) =>
         created ? dayjs(created).format("YYYY-MM-DD") : "无",
+    },
+    {
+      render(value: undefined, project: Project) {
+        return (
+          <Dropdown
+            overlay={
+              <Menu>
+                <Menu.Item key="edit">
+                  <ButtonNoPadding
+                    type="link"
+                    onClick={() => props.setProjectModalOpen(true)}
+                  >
+                    编辑
+                  </ButtonNoPadding>
+                </Menu.Item>
+              </Menu>
+            }
+          >
+            <ButtonNoPadding type="link">...</ButtonNoPadding>
+          </Dropdown>
+        );
+      },
     },
   ];
   return <Table rowKey="id" pagination={false} columns={columns} {...props} />;
