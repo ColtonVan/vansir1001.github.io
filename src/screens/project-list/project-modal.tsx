@@ -1,12 +1,12 @@
-import { Drawer } from "antd";
-import { ComponentProps } from "react";
+import { Button, Drawer } from "antd";
+import { useProjectModal } from "./util";
 
-interface ProjectModalProps extends ComponentProps<typeof Drawer> {
-  projectModalOpen: boolean;
-}
-
-export const ProjectModal = (props: ProjectModalProps) => {
+export const ProjectModal = () => {
+  const { projectModalOpen, close } = useProjectModal();
   return (
-    <Drawer width="100%" visible={props.projectModalOpen} {...props}></Drawer>
+    <Drawer width="100%" visible={projectModalOpen} onClose={close}>
+      <h1>Project Modal</h1>
+      <Button onClick={close}>关闭</Button>
+    </Drawer>
   );
 };
