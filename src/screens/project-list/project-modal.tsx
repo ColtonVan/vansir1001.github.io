@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { ErrorBox } from "../../components/lib";
 import { UserSelect } from "../../components/user-select";
 import { useAddProject, useEditProject } from "../../utils/project";
-import { useProjectModal } from "./util";
+import { useProjectModal, useProjectQueryKey } from "./util";
 const { useForm } = Form;
 
 export const ProjectModal = () => {
@@ -12,7 +12,11 @@ export const ProjectModal = () => {
     useProjectModal();
   const useMutateProject = editingProject ? useEditProject : useAddProject;
 
-  const { mutateAsync, error, isLoading: mutateLoading } = useMutateProject();
+  const {
+    mutateAsync,
+    error,
+    isLoading: mutateLoading,
+  } = useMutateProject(useProjectQueryKey());
   const [form] = useForm();
   const onFinish = (values: any) => {
     mutateAsync({ ...editingProject, ...values }).then((res) => {
