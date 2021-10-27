@@ -14,6 +14,7 @@ export const useUrlQueryParam = <K extends string>(keys: K[]) => {
     ),
     (params: Partial<{ [key in K]: unknown }>) => {
       const o = { ...Object.fromEntries(searchParams), ...params };
+      console.log(o);
       return setSearchParam(o);
     },
   ] as const; //数组转元组

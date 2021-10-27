@@ -17,13 +17,12 @@ export interface Project {
 }
 interface ListProps extends TableProps<Project> {
   users: User[];
-  refresh?: () => void;
 }
 export const List = ({ users, ...props }: ListProps) => {
-  const { open } = useProjectModal();
+  const { open, startEdit } = useProjectModal();
   const { mutate } = useEditProject();
-  const pinProject = (id: number) => (pin: boolean) =>
-    mutate({ id, pin }).then(props.refresh);
+  const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin });
+  const editProject = (id: number) => () => startEdit(id);
   const columns = [
     {
       title: <Pin checked={true} disabled={true} />,
@@ -63,11 +62,10 @@ export const List = ({ users, ...props }: ListProps) => {
           <Dropdown
             overlay={
               <Menu>
-                <Menu.Item key="edit">
-                  <ButtonNoPadding onClick={open} type="link">
-                    创建项目
-                  </ButtonNoPadding>
+                <Menu.Item key="edit" onClick={editProject(project.id)}>
+                  编辑
                 </Menu.Item>
+                <Menu.Item key="delete">删除</Menu.Item>
               </Menu>
             }
           >
