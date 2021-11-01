@@ -22,7 +22,13 @@ export const ProjectListScreen = () => {
       </Row>
       <SearchPanel param={param} setParam={setParam} users={users || []} />
       <ErrorBox error={error} />
-      <List loading={isLoading} dataSource={list || []} users={users || []} />
+      <List
+        loading={isLoading}
+        dataSource={
+          list?.map((project) => ({ ...project, key: project.id })) || []
+        }
+        users={users?.map((user) => ({ ...user, key: user.id })) || []}
+      />
     </Container>
   );
 };

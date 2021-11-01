@@ -6,15 +6,18 @@ const useConfig = (
 ) => {
   const queryClient = useQueryClient();
   return {
-    onSuccess: () => queryClient.invalidateQueries("projects"),
+    // onSuccess: () => queryClient.invalidateQueries("projects"),
+    onSuccess: () => queryClient.invalidateQueries(queryKey[0] as string),
     onMutate: (target: any) => {
       const previousItems = queryClient.getQueryData(queryKey);
-      queryClient.setQueryData(queryKey, (old?: any[]) =>
-        callback(target, old)
-      );
+      queryClient.setQueryData(queryKey, (old?: any[]) => {
+        console.log({ old });
+        return callback(target, old || []);
+      });
       return { previousItems };
     },
     onError(error: any, newItem: any, context: any) {
+      console.log({ error, newItem, context });
       queryClient.setQueryData(queryKey, context.previousItems);
     },
   };
