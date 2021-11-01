@@ -34,7 +34,10 @@ export const ProjectModal = () => {
     <Drawer
       width="100%"
       visible={projectModalOpen}
-      onClose={close}
+      onClose={() => {
+        form.resetFields();
+        close();
+      }}
       forceRender={true}
     >
       <Container>

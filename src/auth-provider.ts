@@ -1,5 +1,6 @@
+import { User } from "./types/project";
+
 //提供auth服务
-import { User } from "./screens/project-list/search-panel";
 const localStorageKey = "__auth_provider_token__";
 
 export const getToken = () => window.localStorage.getItem(localStorageKey);

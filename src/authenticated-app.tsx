@@ -20,7 +20,7 @@ export const AuthenticatedApp = () => {
           <Routes>
             <Route path="/projects" element={<ProjectListScreen />} />
             <Route path="/projects/:projectId/*" element={<ProjectScreen />} />
-            <Navigate to="/projects" />
+            <Navigate to="/projects" replace={true} />
           </Routes>
         </Main>
         <ProjectModal />
@@ -86,5 +86,7 @@ const HeaderLeft = styled(Row)``;
 
 const HeaderRight = styled.div``;
 const Main = styled.main`
-  height: calc(100vh - 6rem);
+  /* height: calc(100vh - 6rem); */
+  display: flex;
+  overflow: hidden;
 `;

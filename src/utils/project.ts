@@ -5,13 +5,13 @@ import {
 } from "./use-optimistic-options";
 import { cleanObject } from "./index";
 import { useHttp } from "./http";
-import { Project } from "./../screens/project-list/list";
 import {
   QueryKey,
   useMutation,
   useQuery,
   // , useQueryClient
 } from "react-query";
+import { Project } from "../types/project";
 // import {
 //   useProjectQueryKey,
 //   useProjectSearchParams,

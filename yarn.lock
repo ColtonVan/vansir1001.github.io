@@ -1810,7 +1810,7 @@
 
 "@open-draft/until@^1.0.3":
   version "1.0.3"
-  resolved "https://registry.nlark.com/@open-draft/until/download/@open-draft/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
+  resolved "https://registry.npmmirror.com/@open-draft/until/download/@open-draft/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha1-25zHGRkaYufZIA9ue6shxbhIrco=
 
 "@pmmmwh/react-refresh-webpack-plugin@0.4.3":
@@ -6221,9 +6221,9 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.3
   integrity sha1-5BK40z9eAGWTy9PO5t+fLOu+gCo=
 
 graphql@^15.4.0:
-  version "15.6.0"
-  resolved "https://registry.nlark.com/graphql/download/graphql-15.6.0.tgz#e69323c6a9780a1a4b9ddf7e35ca8904bb04df02"
-  integrity sha1-5pMjxql4ChpLnd9+NcqJBLsE3wI=
+  version "15.7.1"
+  resolved "https://registry.npmmirror.com/graphql/download/graphql-15.7.1.tgz#c821a1741e04e2bc2c91e138f34c06a86c0464f1"
+  integrity sha1-yCGhdB4E4rwskeE480wGqGwEZPE=
 
 growly@^1.3.0:
   version "1.3.0"
@@ -6347,7 +6347,7 @@ he@^1.2.0:
 
 headers-utils@^1.2.0:
   version "1.2.5"
-  resolved "https://registry.nlark.com/headers-utils/download/headers-utils-1.2.5.tgz#899d6a76b21bcbe18d6108f56136fdbd4f30c404"
+  resolved "https://registry.npmmirror.com/headers-utils/download/headers-utils-1.2.5.tgz#899d6a76b21bcbe18d6108f56136fdbd4f30c404"
   integrity sha1-iZ1qdrIby+GNYQj1YTb9vU8wxAQ=
 
 hex-color-regex@^1.1.0:
@@ -8644,7 +8644,7 @@ ms@^2.1.1:
 
 msw@^0.24.1:
   version "0.24.4"
-  resolved "https://registry.nlark.com/msw/download/msw-0.24.4.tgz#e1f918862146a2bb39be005e52b24905c8c6108e"
+  resolved "https://registry.npmmirror.com/msw/download/msw-0.24.4.tgz#e1f918862146a2bb39be005e52b24905c8c6108e"
   integrity sha1-4fkYhiFGors5vgBeUrJJBcjGEI4=
   dependencies:
     "@open-draft/until" "^1.0.3"
@@ -8814,7 +8814,7 @@ node-libs-browser@^2.2.1:
 
 node-match-path@^0.6.0:
   version "0.6.3"
-  resolved "https://registry.nlark.com/node-match-path/download/node-match-path-0.6.3.tgz#55dd8443d547f066937a0752dce462ea7dc27551"
+  resolved "https://registry.npmmirror.com/node-match-path/download/node-match-path-0.6.3.tgz#55dd8443d547f066937a0752dce462ea7dc27551"
   integrity sha1-Vd2EQ9VH8GaTegdS3ORi6n3CdVE=
 
 node-modules-regexp@^1.0.0:
@@ -8841,7 +8841,7 @@ node-releases@^1.1.61, node-releases@^1.1.76:
 
 node-request-interceptor@^0.5.3:
   version "0.5.9"
-  resolved "https://registry.nlark.com/node-request-interceptor/download/node-request-interceptor-0.5.9.tgz#f0498ae2889162523f58c1e1b4adc39f26e47163"
+  resolved "https://registry.npmmirror.com/node-request-interceptor/download/node-request-interceptor-0.5.9.tgz#f0498ae2889162523f58c1e1b4adc39f26e47163"
   integrity sha1-8EmK4oiRYlI/WMHhtK3DnybkcWM=
   dependencies:
     "@open-draft/until" "^1.0.3"
@@ -10902,7 +10902,7 @@ react-is@^17.0.1:
 
 react-query-devtools@^2.6.3:
   version "2.6.3"
-  resolved "https://registry.nlark.com/react-query-devtools/download/react-query-devtools-2.6.3.tgz#f7c982839d4b0001cee4d5ddfa826493c2f6341f"
+  resolved "https://registry.npmmirror.com/react-query-devtools/download/react-query-devtools-2.6.3.tgz#f7c982839d4b0001cee4d5ddfa826493c2f6341f"
   integrity sha1-98mCg51LAAHO5NXd+oJkk8L2NB8=
   dependencies:
     match-sorter "^4.1.0"
@@ -10914,10 +10914,19 @@ react-query@^2.26.3:
   dependencies:
     "@babel/runtime" "^7.5.5"
 
-react-query@^3.27.0, react-query@^3.5.10:
+react-query@^3.27.0:
   version "3.27.0"
   resolved "https://registry.npmmirror.com/react-query/download/react-query-3.27.0.tgz#77c76377ae41d180c4718da07ef72df82e07306b"
   integrity sha1-d8djd65B0YDEcY2gfvct+C4HMGs=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    broadcast-channel "^3.4.1"
+    match-sorter "^6.0.2"
+
+react-query@^3.5.10:
+  version "3.29.0"
+  resolved "https://registry.npmmirror.com/react-query/download/react-query-3.29.0.tgz#242adcb91fdcbc3ea82c11c97328badb03f1b795"
+  integrity sha1-JCrcuR/cvD6oLBHJcyi62wPxt5U=
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
@@ -12595,7 +12604,7 @@ tr46@^2.1.0:
 
 tr46@~0.0.3:
   version "0.0.3"
-  resolved "https://registry.nlark.com/tr46/download/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
+  resolved "https://registry.npmmirror.com/tr46/download/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
 
 trim-newlines@^3.0.0:
@@ -13232,7 +13241,7 @@ whatwg-mimetype@^2.3.0:
 
 whatwg-url@^5.0.0:
   version "5.0.0"
-  resolved "https://registry.nlark.com/whatwg-url/download/whatwg-url-5.0.0.tgz?cache=0&sync_timestamp=1628179716547&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fwhatwg-url%2Fdownload%2Fwhatwg-url-5.0.0.tgz#966454e8765462e37644d3626f6742ce8b70965d"
+  resolved "https://registry.npmmirror.com/whatwg-url/download/whatwg-url-5.0.0.tgz#966454e8765462e37644d3626f6742ce8b70965d"
   integrity sha1-lmRU6HZUYuN2RNNib2dCzotwll0=
   dependencies:
     tr46 "~0.0.3"
