@@ -1198,6 +1198,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.15.4":
+  version "7.16.0"
+  resolved "https://registry.npmmirror.com/@babel/runtime/download/@babel/runtime-7.16.0.tgz#e27b977f2e2088ba24748bf99b5e1dece64e4f0b"
+  integrity sha1-4nuXfy4giLokdIv5m14d7OZOTws=
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.4", "@babel/template@^7.15.4", "@babel/template@^7.3.3":
   version "7.15.4"
   resolved "https://registry.nlark.com/@babel/template/download/@babel/template-7.15.4.tgz?cache=0&sync_timestamp=1630634142787&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Ftemplate%2Fdownload%2F%40babel%2Ftemplate-7.15.4.tgz#51898d35dcf3faa670c4ee6afcfd517ee139f194"
@@ -2115,6 +2122,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/hoist-non-react-statics@^3.3.0":
+  version "3.3.1"
+  resolved "https://registry.nlark.com/@types/hoist-non-react-statics/download/@types/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha1-ESSq/lEYy1kZd66xzqrtEHDrA58=
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/html-minifier-terser@^5.0.0":
   version "5.1.2"
   resolved "https://registry.nlark.com/@types/html-minifier-terser/download/@types/html-minifier-terser-5.1.2.tgz#693b316ad323ea97eed6b38ed1a3cc02b1672b57"
@@ -2215,6 +2230,13 @@
   resolved "https://registry.nlark.com/@types/qs/download/@types/qs-6.9.7.tgz?cache=0&sync_timestamp=1629708791613&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fqs%2Fdownload%2F%40types%2Fqs-6.9.7.tgz#63bb7d067db107cc1e457c303bc25d511febf6cb"
   integrity sha1-Y7t9Bn2xB8weRXwwO8JdUR/r9ss=
 
+"@types/react-beautiful-dnd@^13.1.2":
+  version "13.1.2"
+  resolved "https://registry.npmmirror.com/@types/react-beautiful-dnd/download/@types/react-beautiful-dnd-13.1.2.tgz#510405abb09f493afdfd898bf83995dc6385c130"
+  integrity sha1-UQQFq7CfSTr9/YmL+DmV3GOFwTA=
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^17.0.9":
   version "17.0.9"
   resolved "https://registry.nlark.com/@types/react-dom/download/@types/react-dom-17.0.9.tgz#441a981da9d7be117042e1a6fd3dac4b30f55add"
@@ -2228,6 +2250,16 @@
   integrity sha1-PlSj6ze6f7NP+vxk9CW+TmjfA7k=
   dependencies:
     "@types/react" "*"
+
+"@types/react-redux@^7.1.20":
+  version "7.1.20"
+  resolved "https://registry.npmmirror.com/@types/react-redux/download/@types/react-redux-7.1.20.tgz#42f0e61ababb621e12c66c96dda94c58423bd7df"
+  integrity sha1-QvDmGrq7Yh4SxmyW3alMWEI7198=
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.0"
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+    redux "^4.0.0"
 
 "@types/react@*", "@types/react@^17.0.24":
   version "17.0.24"
@@ -4372,6 +4404,13 @@ css-blank-pseudo@^0.1.4:
   dependencies:
     postcss "^7.0.5"
 
+css-box-model@^1.2.0:
+  version "1.2.1"
+  resolved "https://registry.nlark.com/css-box-model/download/css-box-model-1.2.1.tgz#59951d3b81fd6b2074a62d49444415b0d2b4d7c1"
+  integrity sha1-WZUdO4H9ayB0pi1JREQVsNK018E=
+  dependencies:
+    tiny-invariant "^1.0.6"
+
 css-color-names@0.0.4, css-color-names@^0.0.4:
   version "0.0.4"
   resolved "https://registry.nlark.com/css-color-names/download/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
@@ -6371,7 +6410,7 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^3.3.1:
+hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.nlark.com/hoist-non-react-statics/download/hoist-non-react-statics-3.3.2.tgz?cache=0&sync_timestamp=1618800559216&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fhoist-non-react-statics%2Fdownload%2Fhoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha1-7OCsr3HWLClpwuxZ/v9CpLGoW0U=
@@ -8330,6 +8369,11 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.nlark.com/media-typer/download/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
+
+memoize-one@^5.1.1:
+  version "5.2.1"
+  resolved "https://registry.npmmirror.com/memoize-one/download/memoize-one-5.2.1.tgz?cache=0&sync_timestamp=1634698133429&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fmemoize-one%2Fdownload%2Fmemoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
+  integrity sha1-gzeqPEM1WBg57AHD1ZQJDOvo8A4=
 
 memory-fs@^0.4.1:
   version "0.4.1"
@@ -10428,6 +10472,11 @@ quick-lru@^4.0.1:
   resolved "https://registry.nlark.com/quick-lru/download/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha1-W4h48ROlgheEjGSCAmxz4bpXcn8=
 
+raf-schd@^4.0.2:
+  version "4.0.3"
+  resolved "https://registry.nlark.com/raf-schd/download/raf-schd-4.0.3.tgz#5d6c34ef46f8b2a0e880a8fcdb743efc5bfdbc1a"
+  integrity sha1-XWw070b4sqDogKj823Q+/Fv9vBo=
+
 raf@^3.4.1:
   version "3.4.1"
   resolved "https://registry.nlark.com/raf/download/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
@@ -10831,6 +10880,19 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
+react-beautiful-dnd@^13.1.0:
+  version "13.1.0"
+  resolved "https://registry.nlark.com/react-beautiful-dnd/download/react-beautiful-dnd-13.1.0.tgz#ec97c81093593526454b0de69852ae433783844d"
+  integrity sha1-7JfIEJNZNSZFSw3mmFKuQzeDhE0=
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+    css-box-model "^1.2.0"
+    memoize-one "^5.1.1"
+    raf-schd "^4.0.2"
+    react-redux "^7.2.0"
+    redux "^4.0.4"
+    use-memo-one "^1.1.1"
+
 react-dev-utils@^11.0.3:
   version "11.0.4"
   resolved "https://registry.nlark.com/react-dev-utils/download/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"
@@ -10895,7 +10957,7 @@ react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1632501459545&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
 
-react-is@^17.0.1:
+react-is@^17.0.1, react-is@^17.0.2:
   version "17.0.2"
   resolved "https://registry.npmmirror.com/react-is/download/react-is-17.0.2.tgz?cache=0&sync_timestamp=1632501459545&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Freact-is%2Fdownload%2Freact-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha1-5pHUqOnHiTZWVVOas3J2Kw77VPA=
@@ -10931,6 +10993,18 @@ react-query@^3.5.10:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
     match-sorter "^6.0.2"
+
+react-redux@^7.2.0:
+  version "7.2.6"
+  resolved "https://registry.npmmirror.com/react-redux/download/react-redux-7.2.6.tgz?cache=0&sync_timestamp=1635217598380&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Freact-redux%2Fdownload%2Freact-redux-7.2.6.tgz#49633a24fe552b5f9caf58feb8a138936ddfe9aa"
+  integrity sha1-SWM6JP5VK1+cr1j+uKE4k23f6ao=
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    "@types/react-redux" "^7.1.20"
+    hoist-non-react-statics "^3.3.2"
+    loose-envify "^1.4.0"
+    prop-types "^15.7.2"
+    react-is "^17.0.2"
 
 react-refresh@^0.8.3:
   version "0.8.3"
@@ -11119,6 +11193,13 @@ redent@^3.0.0:
   dependencies:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
+
+redux@^4.0.0, redux@^4.0.4:
+  version "4.1.2"
+  resolved "https://registry.npmmirror.com/redux/download/redux-4.1.2.tgz?cache=0&sync_timestamp=1635663366590&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fredux%2Fdownload%2Fredux-4.1.2.tgz#140f35426d99bb4729af760afcf79eaaac407104"
+  integrity sha1-FA81Qm2Zu0cpr3YK/PeeqqxAcQQ=
+  dependencies:
+    "@babel/runtime" "^7.9.2"
 
 regenerate-unicode-properties@^9.0.0:
   version "9.0.0"
@@ -12524,6 +12605,11 @@ timsort@^0.3.0:
   resolved "https://registry.nlark.com/timsort/download/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
+tiny-invariant@^1.0.6:
+  version "1.2.0"
+  resolved "https://registry.npmmirror.com/tiny-invariant/download/tiny-invariant-1.2.0.tgz?cache=0&sync_timestamp=1635822718246&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Ftiny-invariant%2Fdownload%2Ftiny-invariant-1.2.0.tgz#a1141f86b672a9148c72e978a19a73b9b94a15a9"
+  integrity sha1-oRQfhrZyqRSMcul4oZpzublKFak=
+
 tmpl@1.0.x:
   version "1.0.5"
   resolved "https://registry.nlark.com/tmpl/download/tmpl-1.0.5.tgz?cache=0&sync_timestamp=1630997226611&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftmpl%2Fdownload%2Ftmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
@@ -12923,6 +13009,11 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-memo-one@^1.1.1:
+  version "1.1.2"
+  resolved "https://registry.npmmirror.com/use-memo-one/download/use-memo-one-1.1.2.tgz#0c8203a329f76e040047a35a1197defe342fab20"
+  integrity sha1-DIIDoyn3bgQAR6NaEZfe/jQvqyA=
 
 use@^3.1.0:
   version "3.1.1"

@@ -35,4 +35,6 @@ export const ProjectListScreen = () => {
 ProjectListScreen.whyDidYouRender = false;
 const Container = styled.div`
   padding: 3.2rem;
+  flex: 1;
+  overflow-y: scroll;
 `;

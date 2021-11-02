@@ -27,16 +27,17 @@ export const useTaskSearchParams = () => {
     "tagId",
   ]);
   const projectId = useProjectIdInUrl();
-  const debouncedName = useDebounce(param.name, 200);
+  // const debouncedName = useDebounce(param.name, 0);
   return useMemo(
     () => ({
       projectId,
       typeId: Number(param.typeId) || undefined,
       processorId: Number(param.processorId) || undefined,
       tagId: Number(param.tagId) || undefined,
-      name: debouncedName,
+      // name: debouncedName,
+      name: param.name,
     }),
-    [projectId, param, debouncedName]
+    [projectId, param]
   );
 };
 

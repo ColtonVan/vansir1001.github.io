@@ -2,7 +2,11 @@ import { Task } from "./../types/task";
 import { QueryKey, useMutation, useQuery } from "react-query";
 import { cleanObject } from ".";
 import { useHttp } from "./http";
-import { useAddConfig, useEditConfig } from "./use-optimistic-options";
+import {
+  useAddConfig,
+  useDeleteConfig,
+  useEditConfig,
+} from "./use-optimistic-options";
 
 interface NewTask extends Task {
   processor: number;
@@ -32,5 +36,12 @@ export const useEditTask = (queryKey: QueryKey) => {
     (params: Partial<Task>) =>
       client(`tasks/${params.id}`, { data: params, method: "PATCH" }),
     useEditConfig(queryKey)
+  );
+};
+export const useDeleteTask = (queryKey: QueryKey) => {
+  const client = useHttp();
+  return useMutation(
+    ({ id }: { id: number }) => client(`tasks/${id}`, { method: "DELETE" }),
+    useDeleteConfig(queryKey)
   );
 };
