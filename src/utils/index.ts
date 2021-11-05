@@ -96,3 +96,12 @@ export const useMountedRef = () => {
   });
   return mountedRef;
 };
+export const findIndexsFromListById = (
+  list: any[],
+  targetId: number
+): number[] => {
+  return list
+    .map((item, index: number) => ({ id: item.id, index }))
+    .filter((item: { id: number; index: number }) => item.id === targetId)
+    .map((item: { id: number; index: number }) => item.index);
+};

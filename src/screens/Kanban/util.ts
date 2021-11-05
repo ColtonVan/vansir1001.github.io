@@ -1,4 +1,3 @@
-import { useDebounce } from "./../../utils/index";
 import { useTask } from "./../../utils/task";
 import { useCallback, useMemo } from "react";
 import { useUrlQueryParam } from "./../../utils/url";
@@ -20,12 +19,7 @@ export const useKanbansSearchParams = () => ({
 export const useKanbansQueryKey = () => ["kanbans", useKanbansSearchParams()];
 
 export const useTaskSearchParams = () => {
-  const [param, setParam] = useUrlQueryParam([
-    "name",
-    "typeId",
-    "processorId",
-    "tagId",
-  ]);
+  const [param] = useUrlQueryParam(["name", "typeId", "processorId", "tagId"]);
   const projectId = useProjectIdInUrl();
   // const debouncedName = useDebounce(param.name, 0);
   return useMemo(

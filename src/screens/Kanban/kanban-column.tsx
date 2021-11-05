@@ -12,6 +12,12 @@ import { Mark } from "components/mark";
 import { useDeleteKanban } from "utils/kanban";
 import { Row } from "components/lib";
 import React from "react";
+import {
+  Draggable,
+  DraggableProvided,
+  Droppable,
+  DroppableProvided,
+} from "react-beautiful-dnd";
 
 const TaskTypeIcon = ({ id }: { id: number }) => {
   const { data: taskTypes } = useTaskTypes();
@@ -26,24 +32,28 @@ const TaskTypeIcon = ({ id }: { id: number }) => {
   );
 };
 
-const TaskCard = ({ task }: { task: Task }) => {
-  const { startEdit } = useTaskModal();
-  const { name: keyword } = useTaskSearchParams();
-  return (
-    <Card
-      onClick={() => startEdit(task.id)}
-      style={{
-        marginBottom: "0.5rem",
-        cursor: "pointer",
-      }}
-    >
-      <p>
-        <Mark name={task.name} keyword={keyword} />
-      </p>
-      <TaskTypeIcon id={task.typeId} />
-    </Card>
-  );
-};
+const TaskCard = React.forwardRef<HTMLDivElement, { task: Task }>(
+  ({ task, ...props }, ref) => {
+    const { startEdit } = useTaskModal();
+    const { name: keyword } = useTaskSearchParams();
+    return (
+      <div ref={ref} {...props}>
+        <Card
+          onClick={() => startEdit(task.id)}
+          style={{
+            marginBottom: "0.5rem",
+            cursor: "pointer",
+          }}
+        >
+          <p>
+            <Mark name={task.name} keyword={keyword} />
+          </p>
+          <TaskTypeIcon id={task.typeId} />
+        </Card>
+      </div>
+    );
+  }
+);
 
 export const KanbanColumn = React.forwardRef<
   HTMLDivElement,
@@ -57,10 +67,37 @@ export const KanbanColumn = React.forwardRef<
         <h3>{kanban.name}</h3>
         <More kanban={kanban} />
       </Row>
+
       <TaskContainer>
-        {tasks?.map((task) => (
-          <TaskCard key={task.id} task={task} />
-        ))}
+        <Droppable
+          type="ROW"
+          direction="vertical"
+          droppableId={String(kanban.id)}
+        >
+          {(dropProvided: DroppableProvided) => (
+            <div ref={dropProvided.innerRef} {...dropProvided.droppableProps}>
+              {tasks?.map((task, taskIndex) => (
+                <Draggable
+                  key={taskIndex}
+                  index={taskIndex}
+                  draggableId={`drag_${kanban.id}_task${taskIndex}`}
+                >
+                  {(dragProvided: DraggableProvided) => (
+                    <>
+                      <TaskCard
+                        ref={dragProvided.innerRef}
+                        {...dragProvided.dragHandleProps}
+                        {...dragProvided.draggableProps}
+                        task={task}
+                      />
+                    </>
+                  )}
+                </Draggable>
+              ))}
+              {dropProvided.placeholder}
+            </div>
+          )}
+        </Droppable>
         <CreateTask kanbanId={kanban.id} />
       </TaskContainer>
     </Container>
