@@ -4,6 +4,7 @@ import { useForm } from "antd/lib/form/Form";
 import { ErrorBox } from "components/lib";
 import { UserSelect } from "components/user-select";
 import { useEffect } from "react";
+import { useProjectIdInUrl } from "screens/Kanban/util";
 import { useAddEpic } from "utils/epic";
 import { useEpicsQueryKey } from "./utils";
 
@@ -12,8 +13,9 @@ export const CreateEpic = (
 ) => {
   const { mutate: addEpic, isLoading, error } = useAddEpic(useEpicsQueryKey());
   const [form] = useForm();
+  const projectId = useProjectIdInUrl();
   const onFinish = async (values: any) => {
-    await addEpic(values);
+    await addEpic({ ...values, projectId });
     props.onClose();
   };
   useEffect(() => {
@@ -46,16 +48,6 @@ export const CreateEpic = (
                 rules={[{ required: true, message: "请输入项目名称" }]}
               >
                 <Input placeholder="请输入项目名称"></Input>
-              </Form.Item>
-              <Form.Item
-                label="部门"
-                name="organization"
-                rules={[{ required: true, message: "请输入部门名称" }]}
-              >
-                <Input placeholder="请输入部门名称"></Input>
-              </Form.Item>
-              <Form.Item label="负责人" name="personId">
-                <UserSelect defaultOptionName="负责人" />
               </Form.Item>
               <Form.Item style={{ textAlign: "right" }}>
                 <Button loading={isLoading} type="primary" htmlType="submit">

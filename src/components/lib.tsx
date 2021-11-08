@@ -62,3 +62,7 @@ export const ScreenContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const CursorSpan = styled.span`
+  cursor: pointer;
+`;
